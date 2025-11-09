@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>My Angel</title>
+<body>
+
+<style>
+
+    body {
+      height: 100vh; 
+      display: flex;
+      justify-content: center; 
+      align-items: center; 
+      background-color: #000000; 
+      margin: 0;
+    }
+
+    .kotak {
+      width: 550px;
+      height: 250px;
+      background-color: lightcoral;
+      border-radius: 12px;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .kotak img{
+      width: 120px;    
+      height: 120px;
+      border: 50%; 
+      object-fit: cover;
+      display: block;      
+      margin: 10px auto 20px auto; 
+    }
+    
+    .kotak button {
+      margin-top: 20px;
+      background-color: white;
+      color: lightcoral;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .kotak button:hover {
+      background-color: pink;
+      color: rgb(0, 0, 0);
+    }
+
+
+    /* Gaya untuk love yang jatuh */
+    .love {
+      position: absolute;
+      color: #ff3366;
+      font-size: 20px;
+      top: -10px;
+      animation: jatuh 4s linear forwards;
+      opacity: 0.8;
+    }
+
+    @keyframes jatuh {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+  <div class="kotak">
+    <h2>Do You Wanna See Angel ? 💖</h2>
+    <img src="https://a.top4top.io/p_3598lg4y81.jpeg" alt="kucing gemoy">
+  <a href="romance 2.html">
+    <button>Yes </button>
+  </a>
+    <button id="noButton">NO</button>
+  </a>
+  </div>
+
+   <audio id="bg-music" autoplay loop>
+    <source src="https://h.top4top.io/m_35986ov5m1.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung pemutar musik.
+   </audio>
+</body>
+
+<script>
+    // Membuat elemen love jatuh
+    function createLove() {
+      const love = document.createElement("div");
+      love.classList.add("love");
+      love.innerHTML = "💖";
+      love.style.left = Math.random() * window.innerWidth + "px";
+      love.style.fontSize = Math.random() * 20 + 10 + "px";
+      document.body.appendChild(love);
+
+      // Hapus love setelah animasi selesai
+      setTimeout(() => {
+        love.remove();
+      }, 4000);
+    }
+
+    // Buat love setiap 300 milidetik
+    setInterval(createLove, 300);
+
+    // Tombol "No" pindah posisi
+    const noButton = document.getElementById("noButton");
+
+    noButton.addEventListener("mouseenter", () => {
+      const kotak = document.querySelector(".kotak");
+      const kotakRect = kotak.getBoundingClientRect();
+
+      // Tentukan batas dalam kotak agar tombol tetap di area kotak
+      const maxX = kotak.offsetWidth - noButton.offsetWidth - 20;
+      const maxY = kotak.offsetHeight - noButton.offsetHeight - 20;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noButton.style.position = "absolute";
+      noButton.style.left = randomX + "px";
+      noButton.style.top = randomY + "px";
+    });
+  </script>
+</body>
+<footer>
+    <audio autoplay>
+        <source src="https://h.top4top.io/m_35986ov5m1.mp3" type="audio">
+    </audio>
+</footer>
+</html>

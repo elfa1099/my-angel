@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>For You</title>
+	<style>
+		body {
+			margin: 0;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: black;
+			overflow: hidden;
+			flex-direction: column;
+			color: white;
+			font-family: "Poppins", sans-serif;
+			text-align: center;
+			position: relative;
+		}
+
+		.kotak {
+			position: relative;
+			width: 300px;
+			height: 300px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 10; /* biar di atas love jatuh */
+		}
+
+		.kotak img {
+			position: absolute;
+			max-width: 100%;
+			max-height: 100%;
+			border-radius: 12px;
+			object-fit: cover;
+			opacity: 0;
+			transition: opacity 2s ease-in-out;
+		}
+
+		.kotak img.gif {
+			opacity: 1; /* tampil pertama */
+		}
+
+		footer {
+			position: fixed;
+			bottom: 20px;
+			text-align: center;
+			width: 100%;
+			color: white;
+			font-size: 16px;
+			opacity: 0;
+			transition: opacity 2s ease;
+			z-index: 10;
+		}
+
+		/* LOVE jatuh */
+		.love {
+			position: absolute;
+			color: #ff5fa2;
+			font-size: 20px;
+			top: -10px;
+			animation: jatuh 5s linear forwards;
+			opacity: 0.8;
+			pointer-events: none;
+			z-index: 1; /* di belakang konten utama */
+		}
+
+		@keyframes jatuh {
+			0% {
+				transform: translateY(0) rotate(0deg);
+				opacity: 1;
+			}
+			100% {
+				transform: translateY(100vh) rotate(360deg);
+				opacity: 0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="kotak">
+		<img src="https://g.top4top.io/p_3598c35h21.gif" class="gif" alt="kucing unyu">
+		<img src="https://k.top4top.io/p_3600zmayw1.jpeg" class="foto" alt="angel picture">
+	</div>
+
+	<footer>
+		<p>Yeah, it's you — you look like an angel in my eyes.<br>
+		I don't care what you say about being ugly or anything wrong 💖</p>
+	</footer>
+
+	<script>
+		// Efek transisi gif ke foto
+		setTimeout(() => {
+			const gif = document.querySelector(".gif");
+			const foto = document.querySelector(".foto");
+			const footer = document.querySelector("footer");
+
+			gif.style.opacity = "0";
+			foto.style.opacity = "1";
+			footer.style.opacity = "1";
+		}, 2500);
+
+		// Efek love jatuh
+		function createLove() {
+			const love = document.createElement("div");
+			love.classList.add("love");
+			love.innerHTML = "💖";
+			love.style.left = Math.random() * window.innerWidth + "px";
+			love.style.fontSize = Math.random() * 20 + 10 + "px";
+			document.body.appendChild(love);
+
+			// hapus setelah selesai animasi
+			setTimeout(() => love.remove(), 5000);
+		}
+
+		setInterval(createLove, 300); // love jatuh tiap 0,3 detik
+	</script>
+</body>
+</html>
+<audio autoplay loop>
+    <source src="https://h.top4top.io/m_35986ov5m1.mp3" type="audio/mpeg">
+  </audio>
